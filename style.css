@@ -1,0 +1,27 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    font-style: italic;
+    color: blue;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.book-card {
+    background-color: aliceblue;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.removeBtn {
+    align-self: center;
+    width: 50%;
+}
