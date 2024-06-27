@@ -28,6 +28,7 @@ addBookToLibrary(theProphet);
 const container = document.querySelector('.container')
 let bookCard;
 let removeBtn;
+let bookCards;
 
 function displayBooks() {
     myLibrary.forEach((book) => {
@@ -81,7 +82,9 @@ form.addEventListener('submit', (event) => {
     if (event.target.nodeName === 'BUTTON') {
         console.log("remove");
         container.removeChild(bookCards[bookIndex])
-        myLibrary.pop(bookIndex);
+        myLibrary.splice(bookIndex, 1);
+        bookCards[bookIndex].setAttribute('index', bookIndex)
+
         }
         
     }
@@ -90,13 +93,33 @@ form.addEventListener('submit', (event) => {
 })
 
 bookCards = container.querySelectorAll('.book-card')
+let bookIndex;
 
 bookCards.forEach(removeBtn => removeBtn.addEventListener('click', event => {
-    let bookIndex = (event.currentTarget.getAttribute("index"))
+    bookIndex = (event.currentTarget.getAttribute("index"))
     console.log(bookIndex)
     if (event.target.nodeName === 'BUTTON') {
-        console.log("remove");
-        container.removeChild(bookCards[bookIndex])
+        console.log("before remove");
+        console.log(bookCards[bookIndex]);
+        console.log(myLibrary[bookIndex]);
+        console.log(bookCards);
+        console.log(myLibrary);
+
+
+        container.removeChild(bookCards[bookIndex]);
+        bookCards = container.querySelectorAll('.book-card')
+        myLibrary.splice(bookIndex, 1);
+        
+        console.log(bookCards[bookIndex]);
+        console.log(myLibrary[bookIndex]);
+
+        bookCards[bookIndex].setAttribute('index', bookIndex);
+
+        console.log("after remove")
+        console.log(bookCards[bookIndex]);
+        console.log(myLibrary[bookIndex]);
+        console.log(bookCards);
+        console.log(myLibrary);
         }
         
     }
