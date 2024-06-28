@@ -30,7 +30,7 @@ let bookCard;
 let removeBtn;
 let bookCards;
 let readBtn;
-let readStatus = "Not Read Yet";
+let readStatus;
 
 function displayBooks() {
     myLibrary.forEach((book) => {
@@ -45,7 +45,7 @@ function displayBooks() {
     readBtn = document.createElement('button');
     bookCard.appendChild(readBtn);
     readBtn.classList.add('readBtn');
-    readBtn.textContent = readStatus;
+    readBtn.textContent = book.read;
 
     removeBtn = document.createElement('button');
     bookCard.appendChild(removeBtn);
@@ -102,10 +102,13 @@ form.addEventListener('submit', (event) => {
     ))
     
     bookCards.forEach(readBtn => readBtn.addEventListener('click', event => {
-        if (event.target.textContent === 'Not Read Yet') {
+        bookIndex = (event.currentTarget.getAttribute("index"))
+        if (myLibrary[bookIndex].read === 'not read yet') {
             event.target.textContent = 'Read';
-        } else if (event.target.textContent === "Read") {
+            myLibrary[bookIndex].toggleRead()
+        } else if (myLibrary[bookIndex].read === 'read') {
             event.target.textContent = 'Not Read Yet' 
+            myLibrary[bookIndex].toggleRead()
         }}))
 })
 
