@@ -21,7 +21,8 @@ h1 {
     flex-direction: column;
 }
 
-.removeBtn {
+.removeBtn,
+.readBtn {
     align-self: center;
     width: 50%;
 }

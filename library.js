@@ -29,20 +29,28 @@ const container = document.querySelector('.container')
 let bookCard;
 let removeBtn;
 let bookCards;
+let readBtn;
+let readStatus = "Not Read Yet";
 
 function displayBooks() {
     myLibrary.forEach((book) => {
     console.log(book.title);
+   
     bookCard = document.createElement('div');
     container.appendChild(bookCard);
     bookCard.classList.add("book-card")
     bookCard.setAttribute('index', myLibrary.indexOf(book))
     bookCard.textContent = book.info();
+    
+    readBtn = document.createElement('button');
+    bookCard.appendChild(readBtn);
+    readBtn.classList.add('readBtn');
+    readBtn.textContent = readStatus;
+
     removeBtn = document.createElement('button');
     bookCard.appendChild(removeBtn);
     removeBtn.classList.add('removeBtn');
-    removeBtn.textContent = 'Remove';
-
+    removeBtn.textContent = 'Remove';    
    
     });
     };
@@ -83,8 +91,10 @@ form.addEventListener('submit', (event) => {
         console.log("remove");
         container.removeChild(bookCards[bookIndex])
         myLibrary.splice(bookIndex, 1);
-        bookCards[bookIndex].setAttribute('index', bookIndex)
-
+        bookCards = container.querySelectorAll('.book-card')
+        for (i = 0; i < bookCards.length; i++) {
+            bookCards[i].setAttribute('index', i);
+        }
         }
         
     }
@@ -113,8 +123,9 @@ bookCards.forEach(removeBtn => removeBtn.addEventListener('click', event => {
         console.log(bookCards[bookIndex]);
         console.log(myLibrary[bookIndex]);
 
-        bookCards[bookIndex].setAttribute('index', bookIndex);
-
+        for (i = 0; i < bookCards.length; i++) {
+            bookCards[i].setAttribute('index', i);
+        }
         console.log("after remove")
         console.log(bookCards[bookIndex]);
         console.log(myLibrary[bookIndex]);
