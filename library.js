@@ -154,10 +154,10 @@ Book.prototype.toggleRead = function() {
 
 bookCards.forEach(readBtn => readBtn.addEventListener('click', event => {
     bookIndex = (event.currentTarget.getAttribute("index"))
-    if (event.target.textContent === 'Not Read Yet') {
+    if (myLibrary[bookIndex].read === 'not read yet') {
         event.target.textContent = 'Read';
         myLibrary[bookIndex].toggleRead()
-    } else if (event.target.textContent === "Read") {
+    } else if (myLibrary[bookIndex].read === 'read') {
         event.target.textContent = 'Not Read Yet' 
         myLibrary[bookIndex].toggleRead()
     }}))
