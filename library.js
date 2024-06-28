@@ -87,7 +87,7 @@ form.addEventListener('submit', (event) => {
     bookCards.forEach(removeBtn => removeBtn.addEventListener('click', event => {
     let bookIndex = (event.currentTarget.getAttribute("index"))
     console.log(bookIndex)
-    if (event.target.nodeName === 'BUTTON') {
+    if (event.target.textContent === 'Remove') {
         console.log("remove");
         container.removeChild(bookCards[bookIndex])
         myLibrary.splice(bookIndex, 1);
@@ -100,6 +100,13 @@ form.addEventListener('submit', (event) => {
     }
 
     ))
+    
+    bookCards.forEach(readBtn => readBtn.addEventListener('click', event => {
+        if (event.target.textContent === 'Not Read Yet') {
+            event.target.textContent = 'Read';
+        } else if (event.target.textContent === "Read") {
+            event.target.textContent = 'Not Read Yet' 
+        }}))
 })
 
 bookCards = container.querySelectorAll('.book-card')
@@ -108,7 +115,7 @@ let bookIndex;
 bookCards.forEach(removeBtn => removeBtn.addEventListener('click', event => {
     bookIndex = (event.currentTarget.getAttribute("index"))
     console.log(bookIndex)
-    if (event.target.nodeName === 'BUTTON') {
+    if (event.target.textContent === 'Remove') {
         console.log("before remove");
         console.log(bookCards[bookIndex]);
         console.log(myLibrary[bookIndex]);
@@ -136,3 +143,10 @@ bookCards.forEach(removeBtn => removeBtn.addEventListener('click', event => {
     }
 
 ))
+
+bookCards.forEach(readBtn => readBtn.addEventListener('click', event => {
+    if (event.target.textContent === 'Not Read Yet') {
+        event.target.textContent = 'Read';
+    } else if (event.target.textContent === "Read") {
+        event.target.textContent = 'Not Read Yet' 
+    }}))
